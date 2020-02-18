@@ -68,7 +68,8 @@ class GuestManager extends AbstractManager
     }
 
 
-    public function create(array $data) {
+    public function create(array $data)
+    {
         $query = "INSERT INTO client(firstname,lastname,entry_date,departure_date) VALUES(:firstname,:lastname,:entry_date,:departure_date)";
 
         $statement = $this->pdo->prepare($query);
@@ -78,5 +79,15 @@ class GuestManager extends AbstractManager
             'entry_date' => $_POST['entry_date'],
             'departure_date' => $_POST['departure_date'],
         ]);
+
     }
+    public function delete(int $id){
+        $query = "DELETE FROM client WHERE id = :id";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'id' => $id,
+        ]);
+    }
+
 }

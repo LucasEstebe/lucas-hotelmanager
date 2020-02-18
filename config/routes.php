@@ -27,6 +27,7 @@ $router->get('/rooms/(\d+)/unassign_guest', 'RoomsController@unassignGuest');
 $router->get('/guests/new', 'GuestsController@new');
 $router->post('/guests/create', 'GuestsController@create');
 $router->get('/guests/(\d+)', 'GuestsController@show');
+$router->get('/guests/(\d+)/delete', 'GuestsController@delete');
 $router->get('/guests', 'GuestsController@index');
 
 $router->run();

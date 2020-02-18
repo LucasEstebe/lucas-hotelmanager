@@ -39,7 +39,7 @@ Gestionnaire d'hôtels Hb-HotelManager
         </div>
         <div class="card-body">
             <p>
-                Occupée par {{ room.guest.firstname }} {{ room.guest.lastname }}.
+                Occupée par <a href="{{ env.base_path }}guests/{{ room.guest.id }}">{{ room.guest.firstname }} {{ room.guest.lastname }}</a>.
                 <a href="{{ env.base_path }}rooms/{{ room.id }}/unassign_guest" class="text-danger">
                     Supprimer la reservation
                 </a>

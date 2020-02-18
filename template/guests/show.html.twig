@@ -18,14 +18,14 @@
     </div>
     <div class="card-body">
     <h3>{{ guest.firstname }} {{ guest.lastname }}</h3>
-    {% if guest.entry_date %}
-        <h5>Entry date: {{ guest.enty_date }}</h5>
-        <h5>Departure date: {{ guest.departure_date }}</h5>
+    {% if guest.entryDate %}
+        <h5>Entry date: {{ guest.entryDate|date("d/m/Y") }}</h5>
+        <h5>Departure date: {{ guest.departureDate|date("d/m/Y") }}</h5>
     {% else %}
         <h6>No bookings</h6>
     {% endif %}
     </div>
-    {% if guest.entry_date is null %}
+    {% if guest.entryDate is null %}
     <div class="card-footer">
         <a href="{{ env.base_path }}guests/{{ guest.id }}/delete" class="btn btn-danger btn-sm">
             <i class="fa fa-trash" aria-hidden="true"></i> Supprimer le client

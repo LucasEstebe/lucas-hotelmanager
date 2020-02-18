@@ -60,8 +60,8 @@ Gestionnaire d'hôtels Hb-HotelManager
                             <span class="badge badge-success">Empty</span>
                             {% endif %}
                         </td>
-                        <td>{{ room.guest ? room.guest.entryDate : '' }}</td>
-                        <td>{{ room.guest ? room.guest.departureDate : ''}}</td>
+                        <td>{{ room.guest ? room.guest.entryDate|date("d/m/Y") : '' }}</td>
+                        <td>{{ room.guest ? room.guest.departureDate|date("d/m/Y") : ''}}</td>
                         <td>
                             <a class="btn btn-primary btn-sm" href="{{env.base_path ~ 'rooms/' ~ room.id}}">
                                 <i class="fa fa-search" aria-hidden="true"></i>

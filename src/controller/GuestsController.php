@@ -13,10 +13,9 @@ class GuestsController extends AbstractController
     }
 
     public function show(int $id) {
-        // 1. Récupérer le idcar par son
         $guest = $this->container->getGuestManager()->findOneById($id);
 
-       echo $this->container->getTwig()->render('/guests/show.html.twig', ['guest' => $guest]);
+        echo $this->container->getTwig()->render('/guests/show.html.twig', ['guest' => $guest]);
     }
 
     public function new(){
@@ -25,6 +24,11 @@ class GuestsController extends AbstractController
 
     public function create(){
         $this->container->getGuestManager()->create($_POST);
+        $this->index();
+    }
+
+    public function delete(int $id){
+        $this->container->getGuestManager()->delete($id);
         $this->index();
     }
 }
