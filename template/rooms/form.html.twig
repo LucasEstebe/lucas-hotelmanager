@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if room %}
+        New Room
+    {% else %}
+        Edit Room
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{{ env.base_path }}rooms/{{ room ? 'update' : 'create' }}" method="post">
+        <div class="form-group">
+            <!-- FIRST NAME -->
+            <label for="number">Room number:</label>
+            <input type="text" class="form-control" name="number" id="number" value="{{ room.number ? room.number : '' }}">
+            {% if car %}
+                <input type="hidden" value="{{ room.id }}" name="id">
+            {% endif %}
+            <button type="submit" class="btn btn-primary my-3">{{ room ? 'Update' : 'Create' }}</button>
+        </div>
+    </form>
+
+{% endblock %}

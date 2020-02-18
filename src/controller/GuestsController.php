@@ -11,6 +11,9 @@ class GuestsController extends AbstractController
 
         echo $this->container->getTwig()->render('/guests/index.html.twig', ['guests' => $guests]);
     }
+
+    public function show(){}
+
     public function new(){
         echo $this->container->getTwig()->render('/guests/form.html.twig');
     }

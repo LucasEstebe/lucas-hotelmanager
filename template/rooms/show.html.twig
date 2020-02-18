@@ -39,7 +39,10 @@ Gestionnaire d'hôtels Hb-HotelManager
         </div>
         <div class="card-body">
             <p>
-                Occupée par Emma Watson. <a href="" class="text-danger">Supprimer la reservation</a>
+                Occupée par {{ room.guest.firstname }} {{ room.guest.lastname }}.
+                <a href="{{ env.base_path }}rooms/{{ room.id }}/unassign_guest" class="text-danger">
+                    Supprimer la reservation
+                </a>
             </p>
         </div>
     </div>
