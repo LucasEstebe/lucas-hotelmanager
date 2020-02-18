@@ -12,7 +12,12 @@ class GuestsController extends AbstractController
         echo $this->container->getTwig()->render('/guests/index.html.twig', ['guests' => $guests]);
     }
 
-    public function show(){}
+    public function show(int $id) {
+        // 1. Récupérer le idcar par son
+        $guest = $this->container->getGuestManager()->findOneById($id);
+
+       echo $this->container->getTwig()->render('/guests/show.html.twig', ['guest' => $guest]);
+    }
 
     public function new(){
         echo $this->container->getTwig()->render('/guests/form.html.twig');

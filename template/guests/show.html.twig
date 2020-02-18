@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Guest #{{ guest.id }}
+{% endblock %}
+
+{% block content %}
+
+
+<a href="{{ env.base_path }}/guests">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> retour à la liste
+</a>
+<!-- CAS 1 : La chambre est innoccupée -->
+
+<div class="card mb-3">
+    <div class="card-header">
+      <strong>Client #{{guest.id}}</strong>
+    </div>
+    <div class="card-body">
+    <h3>{{ guest.firstname }} {{ guest.lastname }}</h3>
+    {% if guest.entry_date %}
+        <h5>Entry date: {{ guest.enty_date }}</h5>
+        <h5>Departure date: {{ guest.departure_date }}</h5>
+    {% else %}
+        <h6>No bookings</h6>
+    {% endif %}
+    </div>
+    {% if guest.entry_date is null %}
+    <div class="card-footer">
+        <a href="{{ env.base_path }}guests/{{ guest.id }}/delete" class="btn btn-danger btn-sm">
+            <i class="fa fa-trash" aria-hidden="true"></i> Supprimer le client
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
