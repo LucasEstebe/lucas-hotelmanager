@@ -13,8 +13,7 @@ class ServiceContainer {
     private $router;
     private $pdo;
     private $roomManager;
-    private $userManager;
-    private $locationManager;
+    private $guestManager;
     private $twig;
 
     public function __construct(array $configuration) {
@@ -48,6 +47,16 @@ class ServiceContainer {
         }
 
         return $this->roomManager;
+    }
+
+
+    public function getGuestManager() {
+        if ($this->guestManager === null)
+        {
+            $this->guestManager = new GuestManager($this->getPdo());
+        }
+
+        return $this->guestManager;
     }
 
     public function getTwig() {

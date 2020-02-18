@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if guest %}
+    New Guest
+    {% else %}
+    Edit Guest
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{{ env.base_path }}guests/{{ guest ? 'update' : 'create' }}" method="post">
+        <div class="form-group">
+            <!-- FIRST NAME -->
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" name="firstname" id="firstName" value="{{ guest.firstName ? guest.firstName : '' }}">
+            <!-- LAST NAME -->
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" name="lastname" id="lastName" value="{{ guest.lastName ? guest.lastName : '' }}">
+            <!-- ENTRY DATE -->
+            <label for="entryDate">Entry date:</label>
+            <input type="date" class="form-control" name="entry_date" id="entryDate" value="{{ guest.entryDate ? guest.entryDate : '' }}">
+            <!-- DEPARTURE DATE -->
+            <label for="departureDate">Departure date:</label>
+            <input type="date" class="form-control" name="departure_date" id="departureDate" value="{{ guest.departureDate ? guest.departureDate : '' }}">
+            {% if car %}
+                <input type="hidden" value="{{ guest.id }}" name="id">
+            {% endif %}
+            <button type="submit" class="btn btn-primary my-3">{{ guest ? 'Update' : 'Create' }}</button>
+        </div>
+    </form>
+
+{% endblock %}
