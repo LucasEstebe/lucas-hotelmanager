@@ -6,8 +6,7 @@ class Room {
 
     private $id;
     private $number;
-    private $clientId;
-    private $client;
+    private $guest;
 
     public function getId() {
         return $this->id;
@@ -25,20 +24,12 @@ class Room {
         $this->number = $number;
     }
 
-    public function getClientId() {
-        return $this->clientId;
+    public function getGuest() {
+        return $this->guest;
     }
 
-    public function setClientId($clientId) {
-        $this->clientId = $clientId;
-    }
-
-    public function getClient() {
-        return $this->client;
-    }
-
-    public function setClient($client) {
-        $this->client = $client;
+    public function setGuest($guest) {
+        $this->guest = $guest;
     }
 
 }

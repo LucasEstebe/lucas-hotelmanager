@@ -17,6 +17,7 @@ class GuestManager extends AbstractManager
         $this->pdo = $pdo;
     }
 
+
     public function findAll()
     {
         $query = "SELECT * FROM client";
@@ -32,6 +33,23 @@ class GuestManager extends AbstractManager
         }
 
         return $guests;
+    }
+
+    /**
+     * @param int $id
+     * @return Guest
+     */
+    public function findOneById(int $id)
+    {
+        $query = "SELECT * FROM client WHERE id = :id";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(['id' => $id]);
+
+        $data = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        $guest = $this->arrayToObject($data);
+
+        return $guest;
     }
 
     /**

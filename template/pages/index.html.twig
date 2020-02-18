@@ -43,22 +43,24 @@ Gestionnaire d'hôtels Hb-HotelManager
                 </thead>
 
                 <tbody>
+                {% for room in rooms %}
                     <tr>
-                        <td>101</td>
+                        <td>{{ room.number }}</td>
                         <td>
                             <span class="badge badge-warning">Réservée</span>
                         </td>
                         <td>
                             <span class="badge badge-success">Libre</span>
                         </td>
-                        <td></td>
-                        <td>2020/03/20</td>
+                        <td>{{ room.guest ? room.guest.entryDate : '' }}</td>
+                        <td>{{ room.guest ? room.guest.departureDate : ''}}</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="{{env.base_path ~ '/rooms/1'}}">
+                            <a class="btn btn-primary btn-sm" href="{{env.base_path ~ '/rooms/' ~ room.id}}">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </a>
                         </td>
                     </tr>
+                {% endfor %}
                 </tbody>
             </table>
 
