@@ -63,7 +63,7 @@ Gestionnaire d'hôtels Hb-HotelManager
                         <td>{{ room.guest ? room.guest.entryDate : '' }}</td>
                         <td>{{ room.guest ? room.guest.departureDate : ''}}</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="{{env.base_path ~ '/rooms/' ~ room.id}}">
+                            <a class="btn btn-primary btn-sm" href="{{env.base_path ~ 'rooms/' ~ room.id}}">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </a>
                         </td>
@@ -71,7 +71,6 @@ Gestionnaire d'hôtels Hb-HotelManager
                 {% endfor %}
                 </tbody>
             </table>
-
         </div>
     </div>
 {% endblock %}

@@ -88,6 +88,7 @@ class RoomManager extends AbstractManager implements ManagerInterface {
     }
 
     /**
+     * @param int $id
      * @param array $data
      */
     public function update(int $id, array $data)
@@ -98,7 +99,7 @@ class RoomManager extends AbstractManager implements ManagerInterface {
         $statement->execute([
             'id' => $id,
             'number' => $data['number'],
-            'client_id'  => $data['client_id']
+            'client_id'  => $data['guest_id']
         ]);
 
     }
