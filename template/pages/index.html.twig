@@ -47,10 +47,18 @@ Gestionnaire d'hôtels Hb-HotelManager
                     <tr>
                         <td>{{ room.number }}</td>
                         <td>
-                            <span class="badge badge-warning">Réservée</span>
+                            {% if room.guest %}
+                            <span class="badge badge-warning">Booked</span>
+                            {% else %}
+                            <span class="badge badge-success">Available</span>
+                            {% endif %}
                         </td>
                         <td>
-                            <span class="badge badge-success">Libre</span>
+                            {% if date(room.guest.entryDate) < date() and date(room.guest.departureDate) > date() %}
+                                <span class="badge badge-danger">Occupied</span>
+                            {% else %}
+                            <span class="badge badge-success">Empty</span>
+                            {% endif %}
                         </td>
                         <td>{{ room.guest ? room.guest.entryDate : '' }}</td>
                         <td>{{ room.guest ? room.guest.departureDate : ''}}</td>
